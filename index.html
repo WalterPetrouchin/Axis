@@ -116,9 +116,7 @@
 
                     {/* Desktop Nav */}
                     <div className="hidden md:flex items-center gap-8">
-                        {/* UPDATE: Consolidated link to product.html */}
-                        <a href="product.html" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">The App</a>
-                        <a href="#philosophy" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Our Goal</a>
+                        <a href="product.html" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">How It Works</a>
                         <a href="join.html" className="bg-[#1A3C34] text-[#F2F0E9] px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2A5C50] transition-all transform hover:scale-105 duration-300">
                         Join Waitlist
                         </a>
@@ -133,9 +131,7 @@
                     {/* Mobile Menu */}
                     {mobileMenuOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-[#F2F0E9] border-b border-[#1A3C34]/10 p-6 flex flex-col gap-4 shadow-lg">
-                        {/* UPDATE: Consolidated link */}
-                        <a href="product.html" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>The App</a>
-                        <a href="#philosophy" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Our Goal</a>
+                        <a href="product.html" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
                         <a href="join.html" className="bg-[#1A3C34] text-[#F2F0E9] w-full py-3 rounded-full mt-2 text-center" onClick={() => setMobileMenuOpen(false)}>Join Waitlist</a>
                     </div>
                     )}
