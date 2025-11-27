@@ -169,18 +169,19 @@
                     {/* --- Navigation --- */}
                     <nav className="fixed w-full z-50 bg-axis-base/90 backdrop-blur-md py-4 shadow-sm border-b border-axis-dark/10">
                         <div className="container mx-auto px-6 flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 bg-axis-dark rounded-full flex items-center justify-center text-axis-base">
-                                    <span className="font-serif italic font-bold text-lg">A</span>
-                                </div>
-                                <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
+                            {/* New Clickable Code */}
+                            <a href="index.html" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                            <div className="w-8 h-8 bg-[#1A3C34] rounded-full flex items-center justify-center text-[#F2F0E9]">
+                            <span className="font-serif italic font-bold text-lg">A</span>
                             </div>
+                            <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
+                            </a>
                             <div className="hidden md:flex items-center gap-8">
                                 <a href="index.html" className="text-sm font-medium hover:text-axis-accent transition-colors">Home</a>
                                 <a href="prdouct.html" className="text-sm font-medium text-axis-accent transition-colors">How It Works</a>
                                 <a href="join.html" className="bg-[#1A3C34] text-[#F2F0E9] px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2A5C50] transition-all transform hover:scale-105 duration-300">
-                        Join Waitlist
-                        </a>
+                                    Join Waitlist
+                                </a>
                             </div>
                             <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                                 {mobileMenuOpen ? <X /> : <Menu />}
