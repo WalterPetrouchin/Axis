@@ -1,1 +1,481 @@
-Hi :)
+import React, { useState, useEffect } from 'react';
+import { 
+  Activity, 
+  Moon, 
+  Sun, 
+  Brain, 
+  ArrowRight, 
+  ShieldCheck, 
+  Smartphone, 
+  Wind, 
+  Droplet,
+  Menu,
+  X,
+  ChevronRight,
+  Leaf,
+  TrendingDown
+} from 'lucide-react';
+
+const AxisLanding = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#F2F0E9] text-[#1A3C34] font-sans selection:bg-[#C76D5B] selection:text-white">
+      {/* Font Imports via style tag since we can't link to head directly in this environment */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        .fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+
+      {/* --- Navigation --- */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#F2F0E9]/90 backdrop-blur-md py-4 shadow-sm border-b border-[#1A3C34]/10' : 'bg-transparent py-6'}`}>
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#1A3C34] rounded-full flex items-center justify-center text-[#F2F0E9]">
+              <span className="font-serif italic font-bold text-lg">A</span>
+            </div>
+            <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
+          </div>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#science" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">The Science</a>
+            <a href="#features" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Features</a>
+            <a href="#philosophy" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Philosophy</a>
+            <button className="bg-[#1A3C34] text-[#F2F0E9] px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2A5C50] transition-all transform hover:scale-105 duration-300">
+              Join Waitlist
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-[#F2F0E9] border-b border-[#1A3C34]/10 p-6 flex flex-col gap-4 shadow-lg">
+            <a href="#science" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>The Science</a>
+            <a href="#features" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Features</a>
+            <a href="#philosophy" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Philosophy</a>
+            <button className="bg-[#1A3C34] text-[#F2F0E9] w-full py-3 rounded-full mt-2">Join Waitlist</button>
+          </div>
+        )}
+      </nav>
+
+      {/* --- Hero Section --- */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20">
+          
+          {/* Text Content (Left) */}
+          <div className="flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#1A3C34]/20 bg-white/50 mb-8 fade-in-up" style={{animationDelay: '0.1s'}}>
+              <span className="w-2 h-2 rounded-full bg-[#C76D5B]"></span>
+              <span className="text-xs font-semibold tracking-wider uppercase text-[#1A3C34]/80">Public Beta Opening Soon</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-serif font-medium leading-[1.1] mb-8 text-[#1A3C34] fade-in-up" style={{animationDelay: '0.2s'}}>
+              The precision of science. <br/>
+              <span className="italic text-[#1A3C34]/80">The wisdom of balance.</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-[#1A3C34]/70 max-w-2xl mx-auto md:mx-0 mb-12 font-light fade-in-up" style={{animationDelay: '0.3s'}}>
+              Axis is the first AI health engine that translates your biometric data into a holistic daily plan, bridging the gap between Western metrics and Eastern energetics.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 fade-in-up" style={{animationDelay: '0.4s'}}>
+              <button className="w-full sm:w-auto bg-[#C76D5B] text-white px-8 py-4 rounded-full font-medium hover:bg-[#B55D4B] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#C76D5B]/20">
+                Request Access <ArrowRight size={18} />
+              </button>
+              <button className="w-full sm:w-auto border border-[#1A3C34]/20 bg-white/50 px-8 py-4 rounded-full font-medium hover:bg-white transition-all text-[#1A3C34]">
+                Watch the Film
+              </button>
+            </div>
+          </div>
+
+          {/* Phone Mockup (Right) */}
+          <div className="flex-1 relative fade-in-up w-full max-w-[400px] md:max-w-none" style={{animationDelay: '0.5s'}}>
+            {/* The Phone Frame */}
+            <div className="relative mx-auto border-[14px] border-[#1A3C34] rounded-[3rem] h-[700px] w-[350px] shadow-2xl bg-[#1A3C34] rotate-[-2deg] hover:rotate-0 transition-transform duration-700 ease-out">
+               {/* The Screen Container */}
+              <div className="h-full w-full bg-[#F2F0E9] rounded-[2.2rem] overflow-hidden relative font-sans">
+                
+                {/* Status Bar (Fake) */}
+                <div className="absolute top-0 w-full h-8 px-6 flex justify-between items-center text-[10px] font-medium text-[#1A3C34]/60 z-20">
+                    <span>9:41</span>
+                    <div className="flex gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 16.37 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                    </div>
+                </div>
+
+                {/* App Content */}
+                <div className="p-6 pt-12 h-full flex flex-col">
+                    {/* Header */}
+                    <div className="flex justify-between items-end mb-8">
+                        <div>
+                            <h2 className="text-[#1A3C34]/60 text-sm uppercase tracking-wider font-semibold mb-1">Wednesday, Oct 12</h2>
+                            <h1 className="font-serif text-3xl text-[#1A3C34]">Today's Balance</h1>
+                        </div>
+                        <div className="w-10 h-10 bg-[#A8BBA2]/30 rounded-full flex items-center justify-center text-[#1A3C34]">
+                            <span className="font-serif italic font-bold">A</span>
+                        </div>
+                    </div>
+
+                    {/* Western Data Card */}
+                    <div className="bg-white p-5 rounded-2xl border border-[#1A3C34]/5 shadow-sm mb-4">
+                        <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-2">
+                                <Activity size={18} className="text-[#C76D5B]" />
+                                <span className="text-xs font-bold uppercase text-[#1A3C34]/70">Western Metric</span>
+                            </div>
+                            <span className="text-xs text-[#C76D5B] font-medium bg-[#C76D5B]/10 px-2 py-1 rounded-full">Below Baseline</span>
+                        </div>
+                        <div className="flex items-end justify-between">
+                            <div>
+                                <div className="text-sm opacity-60 mb-1">Heart Rate Variability</div>
+                                <div className="text-3xl font-serif text-[#1A3C34]">32<span className="text-lg opacity-50 ml-1">ms</span></div>
+                            </div>
+                            {/* Fake mini chart */}
+                            <div className="h-12 w-24 flex items-end gap-1">
+                                <div className="w-full bg-[#1A3C34]/10 h-2 rounded-t-sm"></div>
+                                <div className="w-full bg-[#1A3C34]/10 h-4 rounded-t-sm"></div>
+                                <div className="w-full bg-[#1A3C34]/10 h-3 rounded-t-sm"></div>
+                                <div className="w-full bg-[#1A3C34]/10 h-6 rounded-t-sm"></div>
+                                <div className="w-full bg-[#C76D5B] h-3 rounded-t-sm animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Eastern Insight Card */}
+                    <div className="bg-[#1A3C34] p-5 rounded-2xl text-[#F2F0E9] flex-1">
+                        <div className="flex items-center gap-2 mb-6">
+                            <Leaf size={18} className="text-[#A8BBA2]" />
+                            <span className="text-xs font-bold uppercase text-[#F2F0E9]/70">Eastern Insight</span>
+                        </div>
+                        
+                        <h3 className="font-serif text-2xl mb-2">Yin Replenishment Needed</h3>
+                        <p className="opacity-70 leading-relaxed mb-8">
+                            Your biometric data indicates a depleted state. In TCM, this is a deficiency of cooling, restorative energy.
+                        </p>
+
+                        <div className="space-y-3">
+                            <div className="bg-[#F2F0E9]/10 p-4 rounded-xl flex items-center gap-4">
+                                <div className="h-10 w-10 rounded-full bg-[#F2F0E9]/10 flex items-center justify-center">
+                                    <Droplet size={18} />
+                                </div>
+                                <div>
+                                    <div className="font-medium">Swap Coffee for Matcha</div>
+                                    <div className="text-sm opacity-60">Gentler caffeine + antioxidants</div>
+                                </div>
+                            </div>
+                            <div className="bg-[#F2F0E9]/10 p-4 rounded-xl flex items-center gap-4">
+                                <div className="h-10 w-10 rounded-full bg-[#F2F0E9]/10 flex items-center justify-center">
+                                    <Wind size={18} />
+                                </div>
+                                <div>
+                                    <div className="font-medium">Cooling Breath (Sitali)</div>
+                                    <div className="text-sm opacity-60">3 min practice to reduce internal heat</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                {/* Bottom Nav Bar (Fake) */}
+                 <div className="absolute bottom-0 w-full h-20 bg-white border-t border-[#1A3C34]/5 px-8 flex justify-between items-center text-[#1A3C34]/40">
+                    <div className="flex flex-col items-center text-[#1A3C34]">
+                        <Sun size={24} />
+                        <span className="text-[10px] mt-1 font-medium">Today</span>
+                    </div>
+                     <div className="flex flex-col items-center">
+                        <Activity size={24} />
+                    </div>
+                     <div className="flex flex-col items-center">
+                        <Brain size={24} />
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Abstract Background Element */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-[#A8BBA2]/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 w-[600px] h-[600px] bg-[#C76D5B]/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      </section>
+
+      {/* --- The Problem / "So What" Section --- */}
+      <section className="py-24 border-y border-[#1A3C34]/5 bg-white/40">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-serif mb-6">Data without direction <br/> is just noise.</h2>
+              <p className="text-[#1A3C34]/70 mb-6 leading-relaxed">
+                Modern wearables are incredible at telling you <em>what</em> happened—your HRV dropped, your sleep score is 64. But they fail to tell you <em>why</em>, or what to do about it in a meaningful way.
+              </p>
+              <p className="text-[#1A3C34]/70 leading-relaxed">
+                Axis doesn't just display numbers. It interprets them through a dual lens: clinical Western analysis and time-tested Eastern diagnostics.
+              </p>
+              
+              <div className="mt-8 flex gap-8">
+                <div>
+                  <div className="text-3xl font-serif font-bold text-[#C76D5B] mb-1">2</div>
+                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Health Systems</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-serif font-bold text-[#C76D5B] mb-1">100%</div>
+                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Personalized</div>
+                </div>
+              </div>
+            </div>
+
+            {/* UI Mockup Card (Existing) */}
+            <div className="relative">
+              <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#1A3C34]/5 max-w-md mx-auto transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                <div className="flex justify-between items-center mb-6">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#C76D5B] mb-1">Insight</div>
+                    <div className="font-serif text-xl">Morning Readiness</div>
+                  </div>
+                  <div className="h-10 w-10 bg-[#F2F0E9] rounded-full flex items-center justify-center text-[#1A3C34]">
+                    <Activity size={20} />
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="p-4 bg-[#F2F0E9] rounded-2xl border border-[#1A3C34]/5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-[#1A3C34]"></div>
+                      <span className="text-xs font-bold uppercase">Western Data</span>
+                    </div>
+                    <p className="text-sm opacity-80">High cortisol detected upon waking. HRV is suppressed by 15% compared to baseline.</p>
+                  </div>
+
+                  <div className="p-4 bg-[#A8BBA2]/20 rounded-2xl border border-[#A8BBA2]/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-[#C76D5B]"></div>
+                      <span className="text-xs font-bold uppercase">Eastern Insight</span>
+                    </div>
+                    <p className="text-sm opacity-80">Signs of "Liver Fire Rising." You may feel irritable or have dry eyes today.</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-[#1A3C34]/10">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#1A3C34]/50 mb-3">Prescription</div>
+                  <div className="flex items-center gap-4">
+                     <div className="h-12 w-12 rounded-xl bg-[#1A3C34] flex items-center justify-center text-white shrink-0">
+                        <Wind size={20} />
+                     </div>
+                     <div>
+                       <div className="font-medium">Cooling Breathwork</div>
+                       <div className="text-sm opacity-60">3 mins • Vagus Nerve Reset</div>
+                     </div>
+                     <button className="ml-auto w-8 h-8 rounded-full border border-[#1A3C34]/20 flex items-center justify-center hover:bg-[#1A3C34] hover:text-white transition-colors">
+                       <ChevronRight size={16} />
+                     </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Features Grid --- */}
+      <section id="features" className="py-24 container mx-auto px-6">
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6">A complete system for <br/> biological harmony.</h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="p-8 rounded-3xl bg-white border border-[#1A3C34]/5 hover:shadow-lg transition-all duration-300 group">
+            <div className="h-12 w-12 rounded-full bg-[#C76D5B]/10 text-[#C76D5B] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Droplet size={24} />
+            </div>
+            <h3 className="text-xl font-serif font-semibold mb-3">Alchemical Nutrition</h3>
+            <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
+              We look beyond calories. Axis analyzes the energetics of your food—heating vs. cooling, damp vs. dry—to balance your current physiological state.
+            </p>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="p-8 rounded-3xl bg-white border border-[#1A3C34]/5 hover:shadow-lg transition-all duration-300 group">
+            <div className="h-12 w-12 rounded-full bg-[#A8BBA2]/30 text-[#2A5C50] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Moon size={24} />
+            </div>
+            <h3 className="text-xl font-serif font-semibold mb-3">Circadian Sync</h3>
+            <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
+              Align your habits with the TCM Organ Clock and Western circadian science. Know exactly when to eat, sleep, and think for peak organ function.
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="p-8 rounded-3xl bg-white border border-[#1A3C34]/5 hover:shadow-lg transition-all duration-300 group">
+            <div className="h-12 w-12 rounded-full bg-[#1A3C34]/5 text-[#1A3C34] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Brain size={24} />
+            </div>
+            <h3 className="text-xl font-serif font-semibold mb-3">Nervous System Regulation</h3>
+            <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
+              Real-time stress detection via wearable integration triggers immediate somatic micro-interventions to shift you back into a parasympathetic state.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Trust / Science Section --- */}
+      <section id="science" className="py-24 bg-[#1A3C34] text-[#F2F0E9]">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row gap-16">
+            <div className="md:w-1/3">
+              <h2 className="text-3xl md:text-4xl font-serif mb-6">Rooted in tradition. <br/>Verified by science.</h2>
+              <p className="text-[#F2F0E9]/70 mb-8 leading-relaxed">
+                We don't choose sides. We believe the future of health lies in the integration of ancient pattern recognition and modern biometric precision.
+              </p>
+              <div className="flex items-center gap-3 text-sm font-medium text-[#C76D5B]">
+                <ShieldCheck size={18} />
+                <span>HIPAA Compliant & Encrypted Data</span>
+              </div>
+            </div>
+
+            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="border-l border-[#F2F0E9]/10 pl-6">
+                <div className="text-4xl font-serif mb-2">5,000+</div>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Years of Data</div>
+                <p className="text-sm opacity-70">Our algorithms incorporate classical texts including the Yellow Emperor's Classic of Medicine.</p>
+              </div>
+              <div className="border-l border-[#F2F0E9]/10 pl-6">
+                <div className="text-4xl font-serif mb-2">Real-time</div>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Biometric Sync</div>
+                <p className="text-sm opacity-70">Seamless integration with Apple Health, Oura, and Whoop for continuous analysis.</p>
+              </div>
+              <div className="border-l border-[#F2F0E9]/10 pl-6">
+                <div className="text-4xl font-serif mb-2">100+</div>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Protocols</div>
+                <p className="text-sm opacity-70">Curated by a board of MDs, NDs, and L.Acs working in unison.</p>
+              </div>
+              <div className="border-l border-[#F2F0E9]/10 pl-6">
+                <div className="text-4xl font-serif mb-2">Zero</div>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Hallucinations</div>
+                <p className="text-sm opacity-70">A closed-loop AI system grounded in verified medical and traditional databases.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Testimonial / Story --- */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-sm border border-[#1A3C34]/5 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-16 opacity-5 pointer-events-none">
+             <span className="text-[200px] font-serif leading-none">"</span>
+          </div>
+          
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <p className="text-2xl md:text-3xl font-serif leading-relaxed mb-8">
+              "Finally, an app that treats me like a complex human being, not a machine. Axis noticed my afternoon fatigue was related to my cycle and hydration, not just 'laziness'. The cooling teas it recommended changed my energy in 3 days."
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-12 h-12 bg-[#A8BBA2] rounded-full flex items-center justify-center text-xl font-serif">S</div>
+              <div className="text-left">
+                <div className="font-bold text-[#1A3C34]">Sarah Jenkins</div>
+                <div className="text-sm text-[#1A3C34]/60">Beta User • New York</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- CTA / Footer --- */}
+      <footer className="bg-[#1A3C34] text-[#F2F0E9] pt-20 pb-10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-10">
+            <div className="max-w-md">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-8 bg-[#F2F0E9] rounded-full flex items-center justify-center text-[#1A3C34]">
+                  <span className="font-serif italic font-bold text-lg">A</span>
+                </div>
+                <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
+              </div>
+              <h3 className="text-3xl font-serif mb-6">Find your center.</h3>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="bg-white/10 border border-white/20 rounded-full px-6 py-3 focus:outline-none focus:bg-white/20 transition-all w-full sm:w-64 placeholder:text-white/40"
+                />
+                <button className="bg-[#C76D5B] text-white px-8 py-3 rounded-full font-medium hover:bg-[#B55D4B] transition-all whitespace-nowrap">
+                  Join Waitlist
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-sm">
+              <div>
+                <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Product</h4>
+                <ul className="space-y-3 opacity-80">
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Features</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Integrations</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Pricing</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Science</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Company</h4>
+                <ul className="space-y-3 opacity-80">
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Manifesto</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Careers</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Legal</h4>
+                <ul className="space-y-3 opacity-80">
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Privacy</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Terms</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm opacity-40">
+            <div>&copy; 2025 Axis Health Inc. All rights reserved.</div>
+            <div className="flex gap-6 mt-4 md:mt-0">
+               <span>Made with intention in California.</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default AxisLanding;
