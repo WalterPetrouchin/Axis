@@ -43,9 +43,9 @@ const App = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#technology" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Technology</a>
+            <a href="#technology" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">How it Works</a>
             <a href="#features" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Features</a>
-            <a href="#philosophy" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Methodology</a>
+            <a href="#philosophy" className="text-sm font-medium hover:text-[#C76D5B] transition-colors">Our Goal</a>
             <button className="bg-[#1A3C34] text-[#F2F0E9] px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2A5C50] transition-all transform hover:scale-105 duration-300">
               Join Waitlist
             </button>
@@ -60,9 +60,9 @@ const App = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-[#F2F0E9] border-b border-[#1A3C34]/10 p-6 flex flex-col gap-4 shadow-lg">
-            <a href="#technology" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Technology</a>
+            <a href="#technology" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>How it Works</a>
             <a href="#features" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Features</a>
-            <a href="#philosophy" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Methodology</a>
+            <a href="#philosophy" className="text-lg font-serif" onClick={() => setMobileMenuOpen(false)}>Our Goal</a>
             <button className="bg-[#1A3C34] text-[#F2F0E9] w-full py-3 rounded-full mt-2">Join Waitlist</button>
           </div>
         )}
@@ -76,24 +76,24 @@ const App = () => {
           <div className="flex-1 text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#1A3C34]/20 bg-white/50 mb-8 fade-in-up" style={{animationDelay: '0.1s'}}>
               <span className="w-2 h-2 rounded-full bg-[#C76D5B]"></span>
-              <span className="text-xs font-semibold tracking-wider uppercase text-[#1A3C34]/80">Model v1.0 Public Beta</span>
+              <span className="text-xs font-semibold tracking-wider uppercase text-[#1A3C34]/80">Public Beta Open Now</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-medium leading-[1.1] mb-8 text-[#1A3C34] fade-in-up" style={{animationDelay: '0.2s'}}>
-              The precision of data. <br/>
-              <span className="italic text-[#1A3C34]/80">The intelligence of balance.</span>
+              Smart data. <br/>
+              <span className="italic text-[#1A3C34]/80">A balanced life.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-[#1A3C34]/70 max-w-2xl mx-auto md:mx-0 mb-12 font-light fade-in-up" style={{animationDelay: '0.3s'}}>
-              Axis is the first neural-symbolic health engine that translates raw biometric streams into predictive daily protocols, optimizing your biology in real-time.
+              Axis uses really smart AI to understand your body. It turns your health numbers into a simple plan so you can be your best every single day.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 fade-in-up" style={{animationDelay: '0.4s'}}>
               <button className="w-full sm:w-auto bg-[#C76D5B] text-white px-8 py-4 rounded-full font-medium hover:bg-[#B55D4B] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#C76D5B]/20">
-                Request Access <ArrowRight size={18} />
+                Start Now <ArrowRight size={18} />
               </button>
               <button className="w-full sm:w-auto border border-[#1A3C34]/20 bg-white/50 px-8 py-4 rounded-full font-medium hover:bg-white transition-all text-[#1A3C34]">
-                See the Algorithm
+                See How It Works
               </button>
             </div>
           </div>
@@ -120,7 +120,7 @@ const App = () => {
                     <div className="flex justify-between items-end mb-8">
                         <div>
                             <h2 className="text-[#1A3C34]/60 text-sm uppercase tracking-wider font-semibold mb-1">Wednesday, Oct 12</h2>
-                            <h1 className="font-serif text-3xl text-[#1A3C34]">System Status</h1>
+                            <h1 className="font-serif text-3xl text-[#1A3C34]">Body Status</h1>
                         </div>
                         <div className="w-10 h-10 bg-[#A8BBA2]/30 rounded-full flex items-center justify-center text-[#1A3C34]">
                             <span className="font-serif italic font-bold">A</span>
@@ -132,7 +132,7 @@ const App = () => {
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2">
                                 <Activity size={18} className="text-[#C76D5B]" />
-                                <span className="text-xs font-bold uppercase text-[#1A3C34]/70">Biometric Input</span>
+                                <span className="text-xs font-bold uppercase text-[#1A3C34]/70">Health Data</span>
                             </div>
                             <span className="text-xs text-[#C76D5B] font-medium bg-[#C76D5B]/10 px-2 py-1 rounded-full">Alert</span>
                         </div>
@@ -152,16 +152,16 @@ const App = () => {
                         </div>
                     </div>
 
-                    {/* AI Insight Card - Rebranded to be high-tech */}
+                    {/* AI Insight Card - Simplified */}
                     <div className="bg-[#1A3C34] p-5 rounded-2xl text-[#F2F0E9] flex-1">
                         <div className="flex items-center gap-2 mb-6">
                             <Sparkles size={18} className="text-[#A8BBA2]" />
-                            <span className="text-xs font-bold uppercase text-[#F2F0E9]/70">Neural Analysis</span>
+                            <span className="text-xs font-bold uppercase text-[#F2F0E9]/70">AI Insight</span>
                         </div>
                         
-                        <h3 className="font-serif text-2xl mb-2">Autonomic Overdrive</h3>
+                        <h3 className="font-serif text-2xl mb-2">High Stress Detected</h3>
                         <p className="opacity-70 leading-relaxed mb-8">
-                            Pattern recognition detects elevated sympathetic load. Recovery protocol initiated to modulate cortisol response.
+                            Your body is working too hard right now. Let's help you calm down and recharge so you don't burn out.
                         </p>
 
                         <div className="space-y-3">
@@ -170,8 +170,8 @@ const App = () => {
                                     <Zap size={18} />
                                 </div>
                                 <div>
-                                    <div className="font-medium">Caffeine Modulation</div>
-                                    <div className="text-sm opacity-60">Delay intake by 90 min (Adenosine)</div>
+                                    <div className="font-medium">Wait on Coffee</div>
+                                    <div className="text-sm opacity-60">Wait 90 mins for better energy</div>
                                 </div>
                             </div>
                             <div className="bg-[#F2F0E9]/10 p-4 rounded-xl flex items-center gap-4">
@@ -179,8 +179,8 @@ const App = () => {
                                     <Wind size={18} />
                                 </div>
                                 <div>
-                                    <div className="font-medium">NSDR Protocol</div>
-                                    <div className="text-sm opacity-60">3 min neural reset via breathwork</div>
+                                    <div className="font-medium">Deep Rest Break</div>
+                                    <div className="text-sm opacity-60">3 mins to reset your brain</div>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@ const App = () => {
                  <div className="absolute bottom-0 w-full h-20 bg-white border-t border-[#1A3C34]/5 px-8 flex justify-between items-center text-[#1A3C34]/40">
                     <div className="flex flex-col items-center text-[#1A3C34]">
                         <Sun size={24} />
-                        <span className="text-[10px] mt-1 font-medium">Dashboard</span>
+                        <span className="text-[10px] mt-1 font-medium">Home</span>
                     </div>
                      <div className="flex flex-col items-center">
                         <Activity size={24} />
@@ -216,33 +216,33 @@ const App = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif mb-6">Biometric data without <br/> intelligence is just noise.</h2>
+              <h2 className="text-3xl md:text-4xl font-serif mb-6">Data without a plan <br/> is just confusing.</h2>
               <p className="text-[#1A3C34]/70 mb-6 leading-relaxed">
-                Modern wearables are incredible at capturing raw signals—HRV, sleep stages, SpO2. But they lack the computational context to explain <em>why</em> your physiology is fluctuating.
+                Smart watches are great at tracking numbers. But they usually don't tell you <em>why</em> you feel tired, or exactly what you should do about it.
               </p>
               <p className="text-[#1A3C34]/70 leading-relaxed">
-                Axis uses a proprietary neural-symbolic AI to cross-reference your live metrics against 5,000 years of physiological patterns, delivering high-fidelity health predictions.
+                Axis uses really smart AI to compare your data with what healthy bodies have done for thousands of years, giving you clear advice you can actually use.
               </p>
               
               <div className="mt-8 flex gap-8">
                 <div>
                   <div className="text-3xl font-serif font-bold text-[#C76D5B] mb-1">24/7</div>
-                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Neural Monitoring</div>
+                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Health Tracking</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-serif font-bold text-[#C76D5B] mb-1">ms</div>
-                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Latency</div>
+                  <div className="text-3xl font-serif font-bold text-[#C76D5B] mb-1">Fast</div>
+                  <div className="text-sm font-medium uppercase tracking-wide opacity-60">Advice</div>
                 </div>
               </div>
             </div>
 
-            {/* UI Mockup Card - Rebranded to Logic/AI */}
+            {/* UI Mockup Card - Simplified */}
             <div className="relative">
               <div className="bg-white p-8 rounded-3xl shadow-xl border border-[#1A3C34]/5 max-w-md mx-auto transform rotate-1 hover:rotate-0 transition-transform duration-500">
                 <div className="flex justify-between items-center mb-6">
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#C76D5B] mb-1">Predictive Model</div>
-                    <div className="font-serif text-xl">Morning Readiness</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#C76D5B] mb-1">Daily Forecast</div>
+                    <div className="font-serif text-xl">Morning Check-in</div>
                   </div>
                   <div className="h-10 w-10 bg-[#F2F0E9] rounded-full flex items-center justify-center text-[#1A3C34]">
                     <Activity size={20} />
@@ -253,29 +253,29 @@ const App = () => {
                   <div className="p-4 bg-[#F2F0E9] rounded-2xl border border-[#1A3C34]/5">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-[#1A3C34]"></div>
-                      <span className="text-xs font-bold uppercase">Raw Input</span>
+                      <span className="text-xs font-bold uppercase">What We See</span>
                     </div>
-                    <p className="text-sm opacity-80">High cortisol markers detected. HRV suppressed by 15% vs 30-day baseline.</p>
+                    <p className="text-sm opacity-80">High stress levels found. You're more tired than usual for this time of day.</p>
                   </div>
 
                   <div className="p-4 bg-[#A8BBA2]/20 rounded-2xl border border-[#A8BBA2]/30">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-[#C76D5B]"></div>
-                      <span className="text-xs font-bold uppercase">AI Synthesis</span>
+                      <span className="text-xs font-bold uppercase">What It Means</span>
                     </div>
-                    <p className="text-sm opacity-80">Pattern match: "Sympathetic Dominance." Probability of burnout increases by 40% without intervention.</p>
+                    <p className="text-sm opacity-80">You might feel burnt out later if you don't take a quick break now.</p>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-[#1A3C34]/10">
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#1A3C34]/50 mb-3">Generated Protocol</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#1A3C34]/50 mb-3">Your Plan</div>
                   <div className="flex items-center gap-4">
                      <div className="h-12 w-12 rounded-xl bg-[#1A3C34] flex items-center justify-center text-white shrink-0">
                         <Wind size={20} />
                      </div>
                      <div>
-                       <div className="font-medium">Vagus Nerve Reset</div>
-                       <div className="text-sm opacity-60">3 mins • Downregulate Cortisol</div>
+                       <div className="font-medium">Quick Calm Down</div>
+                       <div className="text-sm opacity-60">3 mins • Lower your stress</div>
                      </div>
                      <button className="ml-auto w-8 h-8 rounded-full border border-[#1A3C34]/20 flex items-center justify-center hover:bg-[#1A3C34] hover:text-white transition-colors">
                        <ChevronRight size={16} />
@@ -291,7 +291,7 @@ const App = () => {
       {/* --- Features Grid --- */}
       <section id="features" className="py-24 container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-5xl font-serif mb-6">A complete operating system <br/> for biological optimization.</h2>
+          <h2 className="text-3xl md:text-5xl font-serif mb-6">Everything you need to <br/> feel your best.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -300,9 +300,9 @@ const App = () => {
             <div className="h-12 w-12 rounded-full bg-[#C76D5B]/10 text-[#C76D5B] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <Zap size={24} />
             </div>
-            <h3 className="text-xl font-serif font-semibold mb-3">Metabolic Intelligence</h3>
+            <h3 className="text-xl font-serif font-semibold mb-3">Smart Nutrition</h3>
             <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
-              We look beyond calories. Axis analyzes metabolic energetics—oxidative stress, insulin response, and inflammation—to generate precision nutrition protocols.
+              We look at how your body uses energy to tell you exactly what to eat and when, so you feel fueled up without the crash.
             </p>
           </div>
 
@@ -311,9 +311,9 @@ const App = () => {
             <div className="h-12 w-12 rounded-full bg-[#A8BBA2]/30 text-[#2A5C50] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <Moon size={24} />
             </div>
-            <h3 className="text-xl font-serif font-semibold mb-3">Chronobiological Sync</h3>
+            <h3 className="text-xl font-serif font-semibold mb-3">Perfect Timing</h3>
             <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
-              Align your habits with your ultradian rhythms. Our algorithms determine your precise biological windows for peak cognitive output and deep recovery.
+              We find the best times for you to sleep, eat, and work based on your body's natural clock, so you're not fighting against yourself.
             </p>
           </div>
 
@@ -322,9 +322,9 @@ const App = () => {
             <div className="h-12 w-12 rounded-full bg-[#1A3C34]/5 text-[#1A3C34] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <Brain size={24} />
             </div>
-            <h3 className="text-xl font-serif font-semibold mb-3">Neural Regulation</h3>
+            <h3 className="text-xl font-serif font-semibold mb-3">Stress Control</h3>
             <p className="text-[#1A3C34]/70 leading-relaxed text-sm">
-              Real-time stress detection via wearable integration triggers immediate somatic micro-interventions to shift your autonomic nervous system state.
+              We spot stress instantly using your watch and give you quick, easy exercises to help you feel calm again in minutes.
             </p>
           </div>
         </div>
@@ -335,13 +335,13 @@ const App = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-16">
             <div className="md:w-1/3">
-              <h2 className="text-3xl md:text-4xl font-serif mb-6">Powered by<br/>Hybrid Intelligence.</h2>
+              <h2 className="text-3xl md:text-4xl font-serif mb-6">Smart AI,<br/>Safe Advice.</h2>
               <p className="text-[#F2F0E9]/70 mb-8 leading-relaxed">
-                We combine the pattern-matching capabilities of large language models with rigorous biometric verification to deliver advice that is both holistic and clinically safe.
+                We use really smart AI combined with real medical facts to give you advice that is safe, simple, and helps you perform your best.
               </p>
               <div className="flex items-center gap-3 text-sm font-medium text-[#C76D5B]">
                 <ShieldCheck size={18} />
-                <span>End-to-End Encrypted & HIPAA Compliant</span>
+                <span>Private & Secure Data</span>
               </div>
             </div>
 
@@ -349,22 +349,22 @@ const App = () => {
               <div className="border-l border-[#F2F0E9]/10 pl-6">
                 <div className="text-4xl font-serif mb-2">5M+</div>
                 <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Data Points</div>
-                <p className="text-sm opacity-70">Trained on vast datasets of physiological patterns and clinical outcomes.</p>
+                <p className="text-sm opacity-70">We learned from millions of health patterns to know what works.</p>
               </div>
               <div className="border-l border-[#F2F0E9]/10 pl-6">
-                <div className="text-4xl font-serif mb-2">Real-time</div>
-                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Biometric Sync</div>
-                <p className="text-sm opacity-70">Seamless integration with Apple Health, Oura, and Whoop for continuous analysis.</p>
+                <div className="text-4xl font-serif mb-2">Instant</div>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Device Sync</div>
+                <p className="text-sm opacity-70">Connects easily with Apple Health, Oura, and Whoop watches.</p>
               </div>
               <div className="border-l border-[#F2F0E9]/10 pl-6">
                 <div className="text-4xl font-serif mb-2">100+</div>
-                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Algorithms</div>
-                <p className="text-sm opacity-70">Proprietary models for stress detection, sleep architecture, and metabolic load.</p>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Smart Rules</div>
+                <p className="text-sm opacity-70">Special tools to track your stress, sleep, and energy levels.</p>
               </div>
               <div className="border-l border-[#F2F0E9]/10 pl-6">
                 <div className="text-4xl font-serif mb-2">Zero</div>
-                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Hallucinations</div>
-                <p className="text-sm opacity-70">A closed-loop AI system grounded in verified medical and traditional databases.</p>
+                <div className="text-sm uppercase tracking-wider opacity-60 mb-2">Mistakes</div>
+                <p className="text-sm opacity-70">A smart system that only uses verified health facts, never guesses.</p>
               </div>
             </div>
           </div>
@@ -380,7 +380,7 @@ const App = () => {
           
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <p className="text-2xl md:text-3xl font-serif leading-relaxed mb-8">
-              "Finally, an app that treats me like a complex system, not a machine. Axis noticed my afternoon fatigue was a cortisol rhythm issue, not just 'laziness'. The protocol adjustments optimized my energy in 3 days."
+              "Finally, an app that treats me like a complex person, not a machine. Axis noticed my tiredness was a stress timing issue, not just laziness. The simple changes fixed my energy in 3 days."
             </p>
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-12 bg-[#A8BBA2] rounded-full flex items-center justify-center text-xl font-serif">S</div>
@@ -404,7 +404,7 @@ const App = () => {
                 </div>
                 <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
               </div>
-              <h3 className="text-3xl font-serif mb-6">Optimized intelligence.</h3>
+              <h3 className="text-3xl font-serif mb-6">Your body, smarter.</h3>
               <div className="flex flex-col sm:flex-row gap-4">
                 <input 
                   type="email" 
@@ -421,17 +421,17 @@ const App = () => {
               <div>
                 <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Product</h4>
                 <ul className="space-y-3 opacity-80">
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Algorithms</a></li>
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Integrations</a></li>
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Pricing</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">How it works</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Connections</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Cost</a></li>
                   <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Science</a></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Company</h4>
                 <ul className="space-y-3 opacity-80">
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Manifesto</a></li>
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Careers</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Our Mission</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Jobs</a></li>
                   <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Contact</a></li>
                 </ul>
               </div>
@@ -439,7 +439,7 @@ const App = () => {
                 <h4 className="font-bold mb-4 opacity-50 uppercase tracking-widest text-xs">Legal</h4>
                 <ul className="space-y-3 opacity-80">
                   <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Privacy</a></li>
-                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Terms</a></li>
+                  <li><a href="#" className="hover:text-[#C76D5B] transition-colors">Rules</a></li>
                 </ul>
               </div>
             </div>
@@ -448,7 +448,7 @@ const App = () => {
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm opacity-40">
             <div>&copy; 2025 Axis Health Inc. All rights reserved.</div>
             <div className="flex gap-6 mt-4 md:mt-0">
-               <span>Made with intention in California.</span>
+               <span>Made with care in California.</span>
             </div>
           </div>
         </div>
