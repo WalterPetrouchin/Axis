@@ -20,7 +20,33 @@
                             base: '#F2F0E9',
                             dark: '#1A3C34',
                             accent: '#C76D5B',
-                            sage: '#A8BBA2'
+                            sage: '#A8BBA2',
+                            light: '#FFFFFF'
+                        }
+                    },
+                    animation: {
+                        'scan': 'scan 3s linear infinite',
+                        'breathe': 'breathe 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'wave': 'wave 1.2s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { top: '0%' },
+                            '100%': { top: '100%' },
+                        },
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
+                            '50%': { transform: 'scale(1.2)', opacity: '0.6' },
+                        },
+                        wave: {
+                            '0%, 100%': { height: '10%' },
+                            '50%': { height: '60%' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -38,8 +64,14 @@
         body { background-color: #F2F0E9; }
         .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(26, 60, 52, 0.1); }
+        
+        .pattern-dot {
+            background-image: radial-gradient(#1A3C34 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
     </style>
 </head>
 <body>
@@ -51,25 +83,88 @@
         // --- ICONS ---
         const Menu = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>;
         const X = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>;
-        
-        // Feature Icons
-        const Camera = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>;
-        const Heart = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.28 3.6-2.34 4.58-3.74 1.5-2.14.73-5.07-2.67-5.49a4.99 4.99 0 0 0-5.38 3.28h-1.06a4.99 4.99 0 0 0-5.38-3.28C5.67 5.19 4.9 8.12 6.4 10.26c.98 1.4 3.09 2.46 4.58 3.74L12 15l7-1z"/><path d="M12 22V15"/></svg>;
-        const Moon = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>;
-        const Zap = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>;
-        const MessageCircle = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>;
-        const Users = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
-        
-        // How It Works Icons
-        const Watch = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="16" height="13" x="4" y="5.5" rx="2"/><path d="M8 2.5v3"/><path d="M16 2.5v3"/><path d="M16 18.5v3"/><path d="M8 18.5v3"/></svg>;
-        const Sparkles = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>;
-        const CheckCircle = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>;
+        const Play = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>;
+        const MapPin = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>;
+        const Trophy = ({size=24}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>;
+
+        // --- SPECIFIC UI COMPONENTS ---
+
+        // 1. Audio Player Visual for Timeline Step 1
+        const AudioPlayer = () => (
+            <div className="bg-white p-4 rounded-xl shadow-md border border-axis-dark/5 flex items-center gap-4 w-full">
+                <div className="w-10 h-10 bg-axis-accent rounded-full flex items-center justify-center text-white shadow-lg shrink-0 cursor-pointer hover:scale-105 transition-transform">
+                    <Play size={14} />
+                </div>
+                <div className="flex-1">
+                    <div className="text-[10px] font-bold uppercase tracking-wider opacity-40 mb-1">Mindset Anchor</div>
+                    <div className="h-6 flex items-center gap-0.5">
+                        {[4,8,5,3,6,9,7,4,8,5,2,5,8,4,3].map((h, i) => (
+                            <div key={i} className="w-1 bg-axis-dark rounded-full animate-wave" style={{height: `${h}0%`, animationDelay: `${i * 0.1}s`}}></div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        );
+
+        // 2. Location Notification for Timeline Step 2
+        const LocationAlert = () => (
+            <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-axis-dark/5 w-full max-w-[280px]">
+                <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center">
+                        <MapPin size={16} />
+                    </div>
+                    <div>
+                        <div className="text-xs font-bold text-axis-dark">Grocery Store</div>
+                        <div className="text-[10px] opacity-50">Just now</div>
+                    </div>
+                </div>
+                <div className="text-sm border-l-2 border-axis-accent pl-3 py-1">
+                    <span className="font-medium">Goal reminder:</span> Buy berries for antioxidants. 🫐
+                </div>
+            </div>
+        );
+
+        // 3. Social Challenge Card for Timeline Step 3
+        const ChallengeCard = () => (
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-axis-dark/5 w-full relative">
+                {/* Header */}
+                <div className="bg-axis-dark p-4 flex justify-between items-center text-white">
+                    <div>
+                        <div className="text-[10px] font-bold uppercase tracking-wider opacity-60">Active Challenge</div>
+                        <div className="font-serif text-lg">Morning Walk</div>
+                    </div>
+                    <Trophy size={20} className="text-yellow-400" />
+                </div>
+                
+                {/* Body */}
+                <div className="p-5">
+                    <div className="flex justify-between items-end mb-2">
+                        <span className="text-xs font-bold">Team Goal</span>
+                        <span className="text-xs opacity-50">85% Complete</span>
+                    </div>
+                    <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-6">
+                        <div className="h-full w-[85%] bg-axis-accent rounded-full"></div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                        <div className="flex -space-x-2">
+                            <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-200"></div>
+                            <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"></div>
+                            <div className="w-8 h-8 rounded-full border-2 border-white bg-axis-sage flex items-center justify-center text-[10px] font-bold text-axis-dark">+2</div>
+                        </div>
+                        <div className="text-xs font-medium text-axis-accent bg-axis-accent/10 px-3 py-1 rounded-full">
+                            3 Day Streak 🔥
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
 
         const ProductPage = () => {
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
             return (
-                <div className="min-h-screen bg-axis-base text-axis-dark font-sans selection:bg-axis-accent selection:text-white">
+                <div className="min-h-screen bg-axis-base text-axis-dark font-sans selection:bg-axis-accent selection:text-white overflow-x-hidden">
                     
                     {/* --- Navigation --- */}
                     <nav className="fixed w-full z-50 bg-axis-base/90 backdrop-blur-md py-4 shadow-sm border-b border-axis-dark/10">
@@ -80,98 +175,117 @@
                                 </div>
                                 <span className="text-2xl font-serif font-semibold tracking-tight">AXIS</span>
                             </div>
-
                             <div className="hidden md:flex items-center gap-8">
-                                <a href="index.html" className="text-sm font-medium hover:text-axis-accent transition-colors">Home</a>
-                                {/* This page is now both Features and How it Works, so we just link to this page */}
+                                <a href="#" className="text-sm font-medium hover:text-axis-accent transition-colors">Home</a>
                                 <a href="#" className="text-sm font-medium text-axis-accent transition-colors">The App</a>
-                                <a href="join.html" className="bg-axis-dark text-axis-base px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all">
-                                    Join Waitlist
-                                </a>
+                                <a href="#" className="bg-axis-dark text-axis-base px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all">Join Waitlist</a>
                             </div>
-
                             <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                                 {mobileMenuOpen ? <X /> : <Menu />}
                             </button>
                         </div>
-                        {mobileMenuOpen && (
-                            <div className="md:hidden absolute top-full left-0 w-full bg-axis-base border-b border-axis-dark/10 p-6 flex flex-col gap-4 shadow-lg">
-                                <a href="index.html" className="text-lg font-serif">Home</a>
-                                <a href="#" className="text-lg font-serif text-axis-accent">The App</a>
-                                <a href="join.html" className="bg-axis-dark text-axis-base w-full py-3 rounded-full mt-2 text-center">Join Waitlist</a>
-                            </div>
-                        )}
                     </nav>
 
-                    {/* --- Hero Section --- */}
+                    {/* --- Hero --- */}
                     <header className="pt-40 pb-20 container mx-auto px-6 text-center">
                         <h1 className="text-5xl md:text-7xl font-serif mb-6 fade-in-up">
                             Smart data. <br/>
                             <span className="italic text-axis-accent">Powerful tools.</span>
                         </h1>
                         <p className="text-xl opacity-70 max-w-2xl mx-auto fade-in-up" style={{animationDelay: '0.2s'}}>
-                            See how Axis turns your biological data into a simple daily plan.
+                            The only health app that knows <em>where</em> you are and <em>why</em> you want to change.
                         </p>
                     </header>
 
-                    {/* --- PART 1: HOW IT WORKS (Timeline) --- */}
+                    {/* --- BEEFED UP TIMELINE --- */}
                     <div className="container mx-auto px-6 py-20 border-b border-axis-dark/5">
                         <div className="max-w-4xl mx-auto relative">
                             {/* Central Line */}
                             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-axis-dark/10 -translate-x-1/2 hidden md:block"></div>
 
-                            {/* STEP 1 */}
-                            <div className="relative grid md:grid-cols-2 gap-12 items-center mb-24 group">
+                            {/* STEP 1: Foundation */}
+                            <div className="relative grid md:grid-cols-2 gap-12 items-center mb-32 group">
                                 <div className="md:text-right order-2 md:order-1 fade-in-up" style={{animationDelay: '0.3s'}}>
                                     <div className="inline-block px-3 py-1 bg-white border border-axis-dark/10 rounded-full text-xs font-bold uppercase tracking-widest mb-4 text-axis-accent">Step 1</div>
                                     <h2 className="text-4xl font-serif mb-4">We Connect.</h2>
-                                    <p className="text-lg opacity-70">Axis talks directly to your smart watch. It sees how you slept and how much you moved.</p>
+                                    <p className="text-lg opacity-80 mb-6">
+                                        We sync seamlessly with Oura, Whoop, and Apple Watch to build a complete picture of your physiology. But we go deeper. Our proprietary sensing technology detects when you need support and deploys your personalized "Why" anchors—mindset cues designed to help you push through tough moments.
+                                    </p>
+                                    <div className="flex gap-2 justify-end opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                                        <div className="h-6 w-6 bg-gray-300 rounded-full"></div> {/* Placeholders for logos */}
+                                        <div className="h-6 w-6 bg-gray-300 rounded-full"></div>
+                                        <div className="h-6 w-6 bg-gray-300 rounded-full"></div>
+                                    </div>
                                 </div>
                                 <div className="relative order-1 md:order-2 flex justify-center fade-in-up" style={{animationDelay: '0.4s'}}>
-                                    <div className="w-16 h-16 md:absolute md:left-0 md:-translate-x-1/2 bg-axis-dark text-axis-base rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
-                                        <Watch size={28} />
+                                    <div className="w-14 h-14 md:absolute md:left-0 md:-translate-x-1/2 bg-axis-dark text-axis-base rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
+                                        <span className="font-bold">1</span>
                                     </div>
-                                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-axis-dark/5 w-full max-w-sm md:ml-12">
-                                        <div className="flex justify-between items-center mb-4"><span className="text-sm font-medium opacity-50">Syncing...</span></div>
-                                        <div className="h-2 bg-axis-dark/5 rounded-full w-full mb-2"></div>
-                                        <div className="h-2 bg-axis-dark/5 rounded-full w-2/3"></div>
+                                    <div className="bg-[#F8F7F4] p-6 rounded-[2rem] shadow-sm border border-axis-dark/5 w-full max-w-sm md:ml-12 flex flex-col gap-4">
+                                        {/* Integration Mockup */}
+                                        <div className="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm">
+                                            <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-xs">Oura</div>
+                                            <div className="flex-1">
+                                                <div className="text-xs font-bold">Oura Ring</div>
+                                                <div className="text-[10px] text-green-600">Connected</div>
+                                            </div>
+                                            <div className="w-4 h-4 text-green-600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+                                        </div>
+                                        {/* Audio Feature Mockup */}
+                                        <AudioPlayer />
                                     </div>
                                 </div>
                             </div>
 
-                            {/* STEP 2 */}
-                            <div className="relative grid md:grid-cols-2 gap-12 items-center mb-24">
+                            {/* STEP 2: Context */}
+                            <div className="relative grid md:grid-cols-2 gap-12 items-center mb-32">
                                 <div className="relative flex justify-center fade-in-up" style={{animationDelay: '0.3s'}}>
-                                    <div className="w-16 h-16 md:absolute md:right-0 md:translate-x-1/2 bg-axis-accent text-white rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
-                                        <Sparkles size={28} />
+                                    <div className="w-14 h-14 md:absolute md:right-0 md:translate-x-1/2 bg-axis-accent text-white rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
+                                         <span className="font-bold">2</span>
                                     </div>
-                                    <div className="bg-axis-dark text-axis-base p-8 rounded-[2rem] shadow-xl w-full max-w-sm md:mr-12">
-                                        <div className="text-xs font-bold uppercase tracking-wider opacity-50 mb-2">Axis Brain</div>
-                                        <div className="text-xl font-serif">"Looks like a high stress day."</div>
+                                    <div className="bg-axis-dark/5 p-8 rounded-[2rem] w-full max-w-sm md:mr-12 relative overflow-hidden">
+                                        {/* Abstract Map Background */}
+                                        <div className="absolute inset-0 opacity-10">
+                                            <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1">
+                                                <path d="M50 0v200M150 0v200M0 50h200M0 150h200" />
+                                            </svg>
+                                        </div>
+                                        {/* Floating Alert */}
+                                        <div className="relative z-10 transform translate-x-2 translate-y-2">
+                                            <LocationAlert />
+                                        </div>
+                                         <div className="relative z-0 transform -translate-x-4 -translate-y-4 opacity-60 scale-90 mt-4">
+                                            <div className="bg-axis-dark text-white p-3 rounded-xl text-xs">
+                                                ❤️ High HR Detected. <br/> <span className="opacity-70">Take a breath.</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="md:text-left fade-in-up" style={{animationDelay: '0.4s'}}>
                                     <div className="inline-block px-3 py-1 bg-white border border-axis-dark/10 rounded-full text-xs font-bold uppercase tracking-widest mb-4 text-axis-accent">Step 2</div>
                                     <h2 className="text-4xl font-serif mb-4">We Think.</h2>
-                                    <p className="text-lg opacity-70">Our AI compares your data to millions of patterns to figure out <em>why</em> you feel the way you do.</p>
+                                    <p className="text-lg opacity-80">
+                                        Our AI integrates the best of both worlds: the precision of modern <strong>Western medical research</strong> and the holistic wisdom of thousands of years of <strong>Eastern health practices</strong>. It analyzes your context to understand not just what is happening in your body, but exactly what you need to restore balance.
+                                    </p>
                                 </div>
                             </div>
 
-                            {/* STEP 3 */}
+                            {/* STEP 3: Action */}
                             <div className="relative grid md:grid-cols-2 gap-12 items-center">
                                 <div className="md:text-right order-2 md:order-1 fade-in-up" style={{animationDelay: '0.3s'}}>
                                     <div className="inline-block px-3 py-1 bg-white border border-axis-dark/10 rounded-full text-xs font-bold uppercase tracking-widest mb-4 text-axis-accent">Step 3</div>
                                     <h2 className="text-4xl font-serif mb-4">You Thrive.</h2>
-                                    <p className="text-lg opacity-70">We give you a simple plan. "Eat this." "Rest now." You follow the steps and feel amazing.</p>
+                                    <p className="text-lg opacity-80">
+                                        We turn that data into an <strong>exact blueprint</strong> for your day, trained on the world's most effective health practices. No guesswork, just a clear path. <strong>You follow the steps and feel amazing.</strong> Plus, with "Squads" to gamify your progress, thriving becomes your new default.
+                                    </p>
                                 </div>
                                 <div className="relative order-1 md:order-2 flex justify-center fade-in-up" style={{animationDelay: '0.4s'}}>
-                                    <div className="w-16 h-16 md:absolute md:left-0 md:-translate-x-1/2 bg-white text-axis-dark rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
-                                        <CheckCircle size={28} />
+                                    <div className="w-14 h-14 md:absolute md:left-0 md:-translate-x-1/2 bg-white text-axis-dark rounded-full flex items-center justify-center z-10 shadow-xl border-4 border-axis-base">
+                                         <span className="font-bold">3</span>
                                     </div>
-                                    <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-axis-dark/5 w-full max-w-sm md:ml-12">
-                                        <div className="flex items-center gap-3 p-3 bg-axis-base rounded-xl">
-                                            <div className="w-5 h-5 rounded-full border-2 border-axis-dark/20"></div>
-                                            <span className="font-medium">Drink water first</span>
+                                    <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-axis-dark/5 w-full max-w-sm md:ml-12 flex items-center justify-center">
+                                        <div className="w-full transform hover:scale-105 transition-transform duration-500">
+                                            <ChallengeCard />
                                         </div>
                                     </div>
                                 </div>
@@ -179,76 +293,159 @@
                         </div>
                     </div>
 
-                    {/* --- PART 2: THE FEATURES (Bento Grid) --- */}
+                    {/* --- TOOLKIT GRID --- */}
                     <div className="container mx-auto px-6 py-24">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-serif mb-4">The Toolkit</h2>
                             <p className="opacity-60">Everything included in your Axis membership.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
-                            {/* Feature 1: Food Scanner */}
-                            <div className="md:col-span-2 bg-white rounded-[2rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden group">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            
+                            {/* 1. Food Scanner */}
+                            <div className="md:col-span-2 bg-white rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden min-h-[420px]">
                                 <div className="relative z-10 max-w-sm">
-                                    <div className="w-12 h-12 bg-axis-accent/10 text-axis-accent rounded-full flex items-center justify-center mb-6">
-                                        <Camera size={24} />
+                                    <div className="w-10 h-10 bg-axis-accent/10 text-axis-accent rounded-full flex items-center justify-center mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
                                     </div>
-                                    <h2 className="text-3xl font-serif mb-4">Smart Food Scanner</h2>
-                                    <p className="text-lg opacity-70 mb-6">Don't count calories. Snap a picture and Axis tells you if that meal will give you energy or make you crash.</p>
+                                    <h2 className="text-3xl font-serif mb-3">Smart Food Scanner</h2>
+                                    <p className="text-lg opacity-80 leading-relaxed">
+                                        Starving yourself to lose a few pounds rarely works long term. Instead, just snap a picture of your meal. Our smart software analyzes that meal to tell you if it will give you sustained energy or cause a crash later in the day.
+                                    </p>
                                 </div>
-                                <div className="absolute right-0 bottom-0 w-64 h-64 bg-axis-accent/5 rounded-tl-[100px] pointer-events-none"></div>
+
+                                {/* Scanner Container */}
+                                <div className="absolute top-1/2 right-[-20px] transform -translate-y-1/2 w-48 h-64 border-2 border-axis-dark/10 rounded-2xl overflow-hidden bg-gray-100/50 backdrop-blur-sm shadow-inner rotate-[-6deg]">
+                                    <img src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Single Scanned Apple" className="absolute inset-0 w-full h-full object-cover" />
+                                    <div className="absolute left-0 right-0 h-0.5 bg-axis-accent shadow-[0_0_10px_rgba(199,109,91,0.5)] animate-scan z-10"></div>
+                                    <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-lg p-2 text-[10px] font-mono shadow-sm border border-axis-dark/5 z-10">
+                                        <div className="flex justify-between font-bold text-axis-dark"><span>Apple</span><span>95 kcal</span></div>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Feature 2: Stress Alarm */}
-                            <div className="md:row-span-2 bg-axis-dark text-axis-base rounded-[2rem] p-10 shadow-xl card-hover relative overflow-hidden">
+                            {/* 2. Stress Alarm */}
+                            <div className="bg-axis-dark text-axis-base rounded-[2.5rem] p-8 shadow-xl card-hover relative overflow-hidden flex flex-col min-h-[420px]">
                                 <div className="relative z-10">
-                                    <div className="w-12 h-12 bg-white/10 text-white rounded-full flex items-center justify-center mb-6">
-                                        <Heart size={24} />
+                                    <div className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.28 3.6-2.34 4.58-3.74 1.5-2.14.73-5.07-2.67-5.49a4.99 4.99 0 0 0-5.38 3.28h-1.06a4.99 4.99 0 0 0-5.38-3.28C5.67 5.19 4.9 8.12 6.4 10.26c.98 1.4 3.09 2.46 4.58 3.74L12 15l7-1z"/><path d="M12 22V15"/></svg>
                                     </div>
-                                    <h2 className="text-3xl font-serif mb-4">Stress Alarm</h2>
-                                    <p className="text-lg opacity-70 mb-8">We alert you instantly when cortisol spikes and give you a 3-minute game to calm down.</p>
-                                    <div className="bg-white/10 p-4 rounded-xl text-center">
-                                        <div className="text-2xl font-serif">Inhale...</div>
+                                    <h2 className="text-2xl font-serif mb-3">Stress Alarm</h2>
+                                    <p className="opacity-90 leading-relaxed">
+                                        When you are stressed, you are not at your best. Our smart proprietary software senses your internal state. When it detects a spike in cortisol, it instantly launches a quick 3-minute game designed to help you relax and reset.
+                                    </p>
+                                </div>
+                                <div className="mt-auto relative h-40 flex items-center justify-center">
+                                    <div className="absolute w-40 h-40 bg-white/5 rounded-full animate-breathe"></div>
+                                    <div className="absolute w-28 h-28 bg-white/10 rounded-full animate-breathe" style={{animationDelay: '1s'}}></div>
+                                    <button className="relative z-10 bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-md px-6 py-2 rounded-full text-base font-serif tracking-wide border border-white/10">Inhale...</button>
+                                </div>
+                            </div>
+
+                            {/* 3. Sleep Clock */}
+                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                                <div className="w-10 h-10 bg-axis-sage/20 text-axis-dark rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                                </div>
+                                <h2 className="text-2xl font-serif mb-2">Sleep Clock</h2>
+                                <p className="opacity-80 text-sm mb-6">
+                                    Guessing your bedtime often leads to groggy mornings. Our proprietary software senses your internal state and recovery needs. It calculates your exact biological bedtime so you wake up refreshed.
+                                </p>
+                                <div className="mt-auto h-24 w-full flex items-end gap-1 opacity-50">
+                                    {[3,5,8,4,6,9,7,4,6,8,5,3].map((h, i) => (
+                                        <div key={i} className="flex-1 bg-axis-dark/20 rounded-t-sm" style={{height: `${h}0%`}}></div>
+                                    ))}
+                                </div>
+                            </div>
+
+                             {/* 4. Movement (Middle) */}
+                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                                <div className="w-10 h-10 bg-orange-100 text-axis-accent rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.28 3.6-2.34 4.58-3.74 1.5-2.14.73-5.07-2.67-5.49a4.99 4.99 0 0 0-5.38 3.28h-1.06a4.99 4.99 0 0 0-5.38-3.28C5.67 5.19 4.9 8.12 6.4 10.26c.98 1.4 3.09 2.46 4.58 3.74L12 15l7-1z"/><path d="M12 22V15"/></svg>
+                                </div>
+                                <h2 className="text-2xl font-serif mb-2">Movement</h2>
+                                <p className="opacity-80 text-sm mb-4">
+                                    Generic fitness goals ignore how your body feels today. Our smart software senses your internal state and capacity. It sets a dynamic daily active zone so you move enough to be healthy without burning out.
+                                </p>
+                                <div className="mt-auto flex justify-center pb-4">
+                                    <div className="relative w-32 h-32 flex items-center justify-center">
+                                        <svg className="w-full h-full transform -rotate-90">
+                                            <circle cx="64" cy="64" r="56" stroke="#F3F4F6" strokeWidth="12" fill="none" />
+                                            <circle cx="64" cy="64" r="56" stroke="#C76D5B" strokeWidth="12" fill="none" strokeDasharray="351" strokeDashoffset="80" strokeLinecap="round" />
+                                        </svg>
+                                        <div className="absolute flex flex-col items-center">
+                                            <span className="text-2xl font-bold text-axis-dark">8,432</span>
+                                            <span className="text-[10px] uppercase tracking-wider opacity-50">Steps</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Feature 3: Sleep */}
-                            <div className="bg-white rounded-[2rem] p-10 border border-axis-dark/5 shadow-sm card-hover">
-                                <div className="w-12 h-12 bg-axis-sage/20 text-axis-dark rounded-full flex items-center justify-center mb-6">
-                                    <Moon size={24} />
+                            {/* 5. Energy Battery */}
+                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                                <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                                 </div>
-                                <h2 className="text-2xl font-serif mb-4">Sleep Clock</h2>
-                                <p className="opacity-70">We calculate the perfect bedtime for <em>you</em>.</p>
-                            </div>
-
-                            {/* Feature 4: Energy */}
-                            <div className="bg-white rounded-[2rem] p-10 border border-axis-dark/5 shadow-sm card-hover">
-                                <div className="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-6">
-                                    <Zap size={24} />
-                                </div>
-                                <h2 className="text-2xl font-serif mb-4">Energy Battery</h2>
-                                <p className="opacity-70">See exactly how much energy you have left for the day.</p>
-                            </div>
-
-                             {/* Feature 5: Ask Axis */}
-                             <div className="md:col-span-2 bg-[#F9F8F6] rounded-[2rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden flex items-center">
-                                <div className="relative z-10 max-w-md">
-                                    <div className="w-12 h-12 bg-axis-dark/5 text-axis-dark rounded-full flex items-center justify-center mb-6">
-                                        <MessageCircle size={24} />
+                                <h2 className="text-2xl font-serif mb-2">Energy Battery</h2>
+                                <p className="opacity-80 text-sm mb-6">
+                                    Pushing through fatigue leads to burnout. Our software senses your internal state throughout the day. We visualize your biological battery level so you know exactly when to push and when to rest.
+                                </p>
+                                <div className="mt-auto">
+                                    <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-4">
+                                        <div className="h-full w-[72%] bg-yellow-400 rounded-full"></div>
                                     </div>
-                                    <h2 className="text-3xl font-serif mb-4">Ask Axis Anything</h2>
-                                    <p className="text-lg opacity-70">"Why am I tired?" Chat with our smart AI assistant anytime.</p>
+                                    <div className="flex gap-2">
+                                        {[1,1,1,0].map((on, i) => <div key={i} className={`h-8 flex-1 rounded-md ${on ? 'bg-axis-dark' : 'bg-gray-100'}`}></div>)}
+                                    </div>
                                 </div>
                             </div>
 
-                             {/* Feature 6: Squad */}
-                             <div className="bg-white rounded-[2rem] p-10 border border-axis-dark/5 shadow-sm card-hover">
-                                <div className="w-12 h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mb-6">
-                                    <Users size={24} />
+                             {/* 6. Ask Axis (Wide) */}
+                             <div className="md:col-span-2 bg-[#F9F8F6] rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden flex flex-col justify-center min-h-[380px]">
+                                <div className="absolute inset-0 pattern-dot opacity-5 pointer-events-none"></div>
+                                <div className="relative z-10 max-w-sm">
+                                    <div className="w-10 h-10 bg-axis-dark/5 text-axis-dark rounded-full flex items-center justify-center mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+                                    </div>
+                                    <h2 className="text-3xl font-serif mb-4 text-axis-dark">Ask Axis Anything</h2>
+                                    <p className="text-lg opacity-80 text-axis-dark">
+                                        Searching online for symptoms is often confusing. Ask Axis instead. Our smart AI assistant knows your personal data and gives you instant answers tailored to how you feel right now.
+                                    </p>
                                 </div>
-                                <h2 className="text-2xl font-serif mb-4">Your Squad</h2>
-                                <p className="opacity-70">Share your wins with friends.</p>
+                                <div className="absolute right-[-10px] bottom-8 w-64 flex flex-col gap-3 font-sans text-sm">
+                                    <div className="bg-white border border-axis-dark/5 p-3 rounded-t-xl rounded-bl-xl shadow-sm self-end max-w-[90%] transform rotate-[2deg]"><span className="opacity-70">I'm stressed, help me relax</span></div>
+                                    <div className="bg-axis-dark text-white p-3 rounded-t-xl rounded-br-xl shadow-md self-start max-w-[90%] transform rotate-[-1deg] flex items-center gap-2">
+                                        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center"><Play size={10}/></div>
+                                        <div><span className="font-medium text-xs block">Sure thing! Playing 3 minute relaxation now</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             {/* 7. Squad (Gamification) */}
+                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                                <div className="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div className="flex justify-between items-end mb-2">
+                                    <h2 className="text-2xl font-serif">Your Squad</h2>
+                                    <span className="text-[10px] uppercase font-bold text-axis-accent tracking-widest bg-pink-50 px-2 py-1 rounded">Weekly Leaderboard</span>
+                                </div>
+                                <p className="opacity-80 text-sm mb-6">
+                                    Trying to get healthy alone is hard. Axis makes it fun. Join a Squad to gamify your habits, track streaks with friends, and use social motivation to hit your goals.
+                                </p>
+                                
+                                <div className="mt-auto flex flex-col gap-3">
+                                    <div className="flex items-center gap-3 p-2 rounded-xl bg-gray-50 border border-gray-100">
+                                        <div className="w-8 h-8 rounded-full bg-axis-dark text-white flex items-center justify-center text-xs font-bold">You</div>
+                                        <div className="flex-1"><div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden"><div className="h-full w-[85%] bg-axis-accent rounded-full"></div></div></div>
+                                        <span className="text-xs font-bold">1st</span>
+                                    </div>
+                                     <div className="flex items-center gap-3 px-2">
+                                        <div className="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-xs font-bold">JD</div>
+                                        <div className="flex-1"><div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden"><div className="h-full w-[60%] bg-gray-300 rounded-full"></div></div></div>
+                                        <span className="text-xs text-gray-400">2nd</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -256,17 +453,12 @@
                     {/* --- Bottom CTA --- */}
                     <section className="bg-axis-accent text-white py-24 text-center">
                         <div className="container mx-auto px-6">
-                            <h2 className="text-4xl md:text-5xl font-serif mb-8">Ready to feel better?</h2>
-                            <a href="join.html" className="inline-block bg-white text-axis-accent px-10 py-4 rounded-full font-medium text-lg hover:bg-axis-base transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300">
+                            <h2 className="text-4xl md:text-5xl font-serif mb-8">Ready to find your balance?</h2>
+                            <button className="inline-block bg-white text-axis-accent px-10 py-4 rounded-full font-medium text-lg hover:bg-axis-base transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300">
                                 Get Started for Free
-                            </a>
+                            </button>
                         </div>
                     </section>
-                    
-                    {/* --- Footer --- */}
-                    <footer className="bg-axis-dark border-t border-white/10 text-white/40 py-8 text-center text-sm">
-                        <p>&copy; 2025 Axis Health Inc. Made with care.</p>
-                    </footer>
                 </div>
             );
         };
