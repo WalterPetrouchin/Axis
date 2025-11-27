@@ -265,7 +265,7 @@
                                     <div className="inline-block px-3 py-1 bg-white border border-axis-dark/10 rounded-full text-xs font-bold uppercase tracking-widest mb-4 text-axis-accent">Step 2</div>
                                     <h2 className="text-4xl font-serif mb-4">We Think.</h2>
                                     <p className="text-lg opacity-80">
-                                        Our AI integrates the best of both worlds: the precision of modern <strong>Western medical research</strong> and the holistic wisdom of thousands of years of <strong>Eastern health practices</strong>. It analyzes your context to understand not just what is happening in your body, but exactly what you need to restore balance.
+                                        Our AI integrates the best of both worlds: the precision of modern <strong>Western medical research</strong> and the holistic wisdom of thousands of years of <strong>Eastern health practices</strong>. It analyzes your context to understand not just what is happening in your body, but exactly what you need to restore balance and feel your best.
                                     </p>
                                 </div>
                             </div>
@@ -303,19 +303,22 @@
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             
                             {/* 1. Food Scanner */}
-                            <div className="md:col-span-2 bg-white rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden min-h-[420px]">
-                                <div className="relative z-10 max-w-sm">
+                            <div className="md:col-span-2 bg-white rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden min-h-[460px]">
+                                <div className="relative z-10 max-w-lg">
                                     <div className="w-10 h-10 bg-axis-accent/10 text-axis-accent rounded-full flex items-center justify-center mb-6">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
                                     </div>
                                     <h2 className="text-3xl font-serif mb-3">Smart Food Scanner</h2>
-                                    <p className="text-lg opacity-80 leading-relaxed">
-                                        Starving yourself to lose a few pounds rarely works long term. Instead, just snap a picture of your meal. Our smart software analyzes that meal to tell you if it will give you sustained energy or cause a crash later in the day.
+                                    <p className="text-lg opacity-80 leading-loose mb-4">
+                                        Starving yourself to lose a few pounds rarely works long term. Instead, just snap a picture of your meal.
+                                    </p>
+                                    <p className="text-lg opacity-80 leading-loose">
+                                        Our proprietary software measures immediate impact on your current state alongside cumulative health markers, helping you make choices that pay dividends for your lifespan
                                     </p>
                                 </div>
 
                                 {/* Scanner Container */}
-                                <div className="absolute top-1/2 right-[-20px] transform -translate-y-1/2 w-48 h-64 border-2 border-axis-dark/10 rounded-2xl overflow-hidden bg-gray-100/50 backdrop-blur-sm shadow-inner rotate-[-6deg]">
+                                <div className="absolute top-1/2 right-[-20px] transform -translate-y-1/2 w-48 h-64 border-2 border-axis-dark/10 rounded-2xl overflow-hidden bg-gray-100/50 backdrop-blur-sm shadow-inner rotate-[-6deg] hidden lg:block">
                                     <img src="https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Single Scanned Apple" className="absolute inset-0 w-full h-full object-cover" />
                                     <div className="absolute left-0 right-0 h-0.5 bg-axis-accent shadow-[0_0_10px_rgba(199,109,91,0.5)] animate-scan z-10"></div>
                                     <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-lg p-2 text-[10px] font-mono shadow-sm border border-axis-dark/5 z-10">
@@ -325,14 +328,17 @@
                             </div>
 
                             {/* 2. Stress Alarm */}
-                            <div className="bg-axis-dark text-axis-base rounded-[2.5rem] p-8 shadow-xl card-hover relative overflow-hidden flex flex-col min-h-[420px]">
+                            <div className="bg-axis-dark text-axis-base rounded-[2.5rem] p-8 shadow-xl card-hover relative overflow-hidden flex flex-col min-h-[460px]">
                                 <div className="relative z-10">
                                     <div className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center mb-6">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.28 3.6-2.34 4.58-3.74 1.5-2.14.73-5.07-2.67-5.49a4.99 4.99 0 0 0-5.38 3.28h-1.06a4.99 4.99 0 0 0-5.38-3.28C5.67 5.19 4.9 8.12 6.4 10.26c.98 1.4 3.09 2.46 4.58 3.74L12 15l7-1z"/><path d="M12 22V15"/></svg>
                                     </div>
                                     <h2 className="text-2xl font-serif mb-3">Stress Alarm</h2>
-                                    <p className="opacity-90 leading-relaxed">
-                                        When you are stressed, you are not at your best. Our smart proprietary software senses your internal state. When it detects a spike in cortisol, it instantly launches a quick 3-minute game designed to help you relax and reset.
+                                    <p className="opacity-90 leading-loose mb-4">
+                                        When you are stressed, you are not at your best. High cortisol levels kill your focus and mood.
+                                    </p>
+                                    <p className="opacity-90 leading-loose">
+                                        Our smart proprietary software senses your internal state. When it detects a spike in cortisol, it instantly launches a quick 3-minute game designed to help you relax and reset.
                                     </p>
                                 </div>
                                 <div className="mt-auto relative h-40 flex items-center justify-center">
@@ -343,13 +349,16 @@
                             </div>
 
                             {/* 3. Sleep Clock */}
-                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[460px]">
                                 <div className="w-10 h-10 bg-axis-sage/20 text-axis-dark rounded-full flex items-center justify-center mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                                 </div>
                                 <h2 className="text-2xl font-serif mb-2">Sleep Clock</h2>
-                                <p className="opacity-80 text-sm mb-6">
-                                    Guessing your bedtime often leads to groggy mornings. Our proprietary software senses your internal state and recovery needs. It calculates your exact biological bedtime so you wake up refreshed.
+                                <p className="opacity-80 text-sm leading-loose mb-4">
+                                    Guessing your bedtime often leads to groggy mornings. You need rest that actually restores you.
+                                </p>
+                                <p className="opacity-80 text-sm leading-loose mb-6">
+                                    Our smart proprietary software senses your internal state and recovery needs. It calculates your exact biological bedtime so you wake up refreshed.
                                 </p>
                                 <div className="mt-auto h-24 w-full flex items-end gap-1 opacity-50">
                                     {[3,5,8,4,6,9,7,4,6,8,5,3].map((h, i) => (
@@ -359,13 +368,16 @@
                             </div>
 
                              {/* 4. Movement (Middle) */}
-                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[460px]">
                                 <div className="w-10 h-10 bg-orange-100 text-axis-accent rounded-full flex items-center justify-center mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.28 3.6-2.34 4.58-3.74 1.5-2.14.73-5.07-2.67-5.49a4.99 4.99 0 0 0-5.38 3.28h-1.06a4.99 4.99 0 0 0-5.38-3.28C5.67 5.19 4.9 8.12 6.4 10.26c.98 1.4 3.09 2.46 4.58 3.74L12 15l7-1z"/><path d="M12 22V15"/></svg>
                                 </div>
                                 <h2 className="text-2xl font-serif mb-2">Movement</h2>
-                                <p className="opacity-80 text-sm mb-4">
-                                    Generic fitness goals ignore how your body feels today. Our smart software senses your internal state and capacity. It sets a dynamic daily active zone so you move enough to be healthy without burning out.
+                                <p className="opacity-80 text-sm leading-loose mb-4">
+                                    Generic fitness goals ignore how your body feels today. Pushing too hard can actually set you back.
+                                </p>
+                                <p className="opacity-80 text-sm leading-loose mb-4">
+                                    Our smart proprietary software senses your internal state and capacity. It sets a dynamic daily active zone so you move enough to be healthy without burning out.
                                 </p>
                                 <div className="mt-auto flex justify-center pb-4">
                                     <div className="relative w-32 h-32 flex items-center justify-center">
@@ -382,13 +394,16 @@
                             </div>
 
                             {/* 5. Energy Battery */}
-                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                            <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[460px]">
                                 <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                                 </div>
                                 <h2 className="text-2xl font-serif mb-2">Energy Battery</h2>
-                                <p className="opacity-80 text-sm mb-6">
-                                    Pushing through fatigue leads to burnout. Our software senses your internal state throughout the day. We visualize your biological battery level so you know exactly when to push and when to rest.
+                                <p className="opacity-80 text-sm leading-loose mb-4">
+                                    Pushing through fatigue leads to burnout. Burnout ain't it.
+                                </p>
+                                <p className="opacity-80 text-sm leading-loose mb-6">
+                                    Our software senses your internal state throughout the day. We visualize your biological battery level so you know exactly when to push and when to rest.
                                 </p>
                                 <div className="mt-auto">
                                     <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-4">
@@ -401,15 +416,18 @@
                             </div>
 
                              {/* 6. Ask Axis (Wide) */}
-                             <div className="md:col-span-2 bg-[#F9F8F6] rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden flex flex-col justify-center min-h-[380px]">
+                             <div className="md:col-span-2 bg-[#F9F8F6] rounded-[2.5rem] p-10 border border-axis-dark/5 shadow-sm card-hover relative overflow-hidden flex flex-col justify-center min-h-[460px]">
                                 <div className="absolute inset-0 pattern-dot opacity-5 pointer-events-none"></div>
-                                <div className="relative z-10 max-w-sm">
+                                <div className="relative z-10 max-w-lg">
                                     <div className="w-10 h-10 bg-axis-dark/5 text-axis-dark rounded-full flex items-center justify-center mb-6">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                                     </div>
                                     <h2 className="text-3xl font-serif mb-4 text-axis-dark">Ask Axis Anything</h2>
-                                    <p className="text-lg opacity-80 text-axis-dark">
-                                        Searching online for symptoms is often confusing. Ask Axis instead. Our smart AI assistant knows your personal data and gives you instant answers tailored to how you feel right now.
+                                    <p className="text-lg opacity-80 text-axis-dark leading-loose mb-4">
+                                        Searching online for symptoms is often confusing. You get generic advice that doesn't apply to you.
+                                    </p>
+                                    <p className="text-lg opacity-80 text-axis-dark leading-loose">
+                                        Ask Axis instead. Our smart AI assistant knows your personal data and gives you instant answers tailored to how you feel right now.
                                     </p>
                                 </div>
                                 <div className="absolute right-[-10px] bottom-8 w-64 flex flex-col gap-3 font-sans text-sm">
@@ -422,7 +440,7 @@
                             </div>
 
                              {/* 7. Squad (Gamification) */}
-                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[380px]">
+                             <div className="bg-white rounded-[2.5rem] p-8 border border-axis-dark/5 shadow-sm card-hover flex flex-col min-h-[460px]">
                                 <div className="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                                 </div>
@@ -430,8 +448,11 @@
                                     <h2 className="text-2xl font-serif">Your Squad</h2>
                                     <span className="text-[10px] uppercase font-bold text-axis-accent tracking-widest bg-pink-50 px-2 py-1 rounded">Weekly Leaderboard</span>
                                 </div>
-                                <p className="opacity-80 text-sm mb-6">
-                                    Trying to get healthy alone is hard. Axis makes it fun. Join a Squad to gamify your habits, track streaks with friends, and use social motivation to hit your goals.
+                                <p className="opacity-80 text-sm leading-loose mb-4">
+                                    Trying to get healthy alone is hard. Willpower runs out eventually.
+                                </p>
+                                <p className="opacity-80 text-sm leading-loose mb-6">
+                                    Axis makes it fun. Join a Squad to gamify your habits, track streaks with friends, and use social motivation to hit your goals.
                                 </p>
                                 
                                 <div className="mt-auto flex flex-col gap-3">
